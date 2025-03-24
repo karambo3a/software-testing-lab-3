@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'jacoco'
     id("io.qameta.allure") version "2.12.0"
+    id("com.diffplug.spotless") version "7.0.2"
 }
 
 allure {
@@ -61,4 +62,17 @@ jacocoTestReport {
 
 allureReport {
     dependsOn test
+}
+
+spotless {
+    format 'misc', {
+        target '*.gradle', '.gitignore'
+
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    java {
+        googleJavaFormat('1.19.2').aosp().reflowLongStrings().skipJavadocFormatting()
+        formatAnnotations()
+    }
 }
