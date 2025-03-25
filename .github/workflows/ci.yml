@@ -35,6 +35,9 @@ jobs:
       - name: Spotless check
         run: ./gradlew spotlessCheck
 
+      - name: Spotbugs check
+        run: ./gradlew spotbugsTest spotbugsMain
+
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 

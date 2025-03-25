@@ -19,11 +19,11 @@ public class UserAnalyticsIntegrationTest {
     private static final String LOGIN_TIME = "2025-03-05T14:00:00.00";
     private static final String LOGOUT_TIME = "2025-03-05T15:00:00.00";
     private Javalin app;
-    private final int port = 7000;
 
     @BeforeAll
     void setUp() {
         app = UserAnalyticsController.createApp();
+        int port = 7000;
         app.start(port);
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = port;
